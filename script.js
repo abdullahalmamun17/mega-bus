@@ -62,7 +62,12 @@ bookNow.addEventListener('click', function () {
         const totalFare = subTotalFare + (subTotalFare * 0.1);
         confirmTotal.innerText = '$' + totalFare;
     }
+    document.getElementById('msg').innerText = '';
+})
 
+confirmPurchase.addEventListener('click', function () {
+        const msg = document.getElementById('msg');
+        msg.innerText = 'Successfully order placed. Thanks for purchase.';
 })
 
 function calculateTotal() {
@@ -88,5 +93,4 @@ function calculateTotal() {
     //calculating total price
     const total = subTotal + tax;
     document.getElementById('total').innerText = '$' + total;
-
 }
