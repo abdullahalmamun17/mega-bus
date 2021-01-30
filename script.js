@@ -44,8 +44,7 @@ economyMinusBtn.addEventListener('click', function () {
 })
 
 bookNow.addEventListener('click', function () {
-    const total = parseInt(document.getElementById('total').innerText);
-    if (total > 0) {
+    if (!isNaN) {
         const firstClassInput = document.getElementById('first-class-input');
         const economyInput = document.getElementById('economy-input');
 
@@ -62,12 +61,13 @@ bookNow.addEventListener('click', function () {
         const totalFare = subTotalFare + (subTotalFare * 0.1);
         confirmTotal.innerText = '$' + totalFare;
     }
+
     document.getElementById('msg').innerText = '';
 })
 
 confirmPurchase.addEventListener('click', function () {
-        const msg = document.getElementById('msg');
-        msg.innerText = 'Successfully order placed. Thanks for purchase.';
+    const msg = document.getElementById('msg');
+    msg.innerText = 'Successfully order placed. Thanks for purchase.';
 })
 
 function calculateTotal() {
