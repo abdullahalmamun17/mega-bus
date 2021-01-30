@@ -2,6 +2,7 @@ const firstClassPlusBtn = document.getElementById('first-class-plus-btn');
 const firstClassMinusBtn = document.getElementById('first-class-minus-btn');
 const economyPlusBtn = document.getElementById('economy-plus-btn');
 const economyMinusBtn = document.getElementById('economy-minus-btn');
+const confirmPurchase = document.getElementById('confirm-purchase');
 const bookNow = document.getElementById('book-now-btn');
 
 firstClassPlusBtn.addEventListener('click', function () {
@@ -42,28 +43,36 @@ economyMinusBtn.addEventListener('click', function () {
     calculateTotal();
 })
 
-bookNow.addEventListener('click', function(){
-    const mainContent = document.getElementById('main-content');
-    mainContent.parentNode.removeChild(mainContent)
-    const mainDiv = document.createElement('div');
-    mainDiv.style.border = '3px solid green';
-    mainDiv.style.height = '500px';
-    mainDiv.style.width = '300px';
-    mainDiv.style.backgroundColor = 'red';
-    mainContent.appendChild(mainDiv);
-    mainDiv.style.display = 'block';
-    
-})
+bookNow.addEventListener('click', function () {
+    const total = parseInt(document.getElementById('total').innerText);
+    if (total > 0) {
+        const firstClassInput = document.getElementById('first-class-input');
+        const economyInput = document.getElementById('economy-input');
 
+        const confirmFirstClass = document.getElementById('confirm-first-class');
+        const firstClassFare = parseInt(firstClassInput.value) * 150;
+        confirmFirstClass.innerText = '$' + firstClassFare;
+        const confirmEconomy = document.getElementById('confirm-economy');
+        const economyFare = parseInt(economyInput.value) * 100;
+        confirmEconomy.innerText = '$' + economyFare;
+        const confirmSubTotal = document.getElementById('confirm-subtotal');
+        const subTotalFare = firstClassFare + economyFare;
+        confirmSubTotal.innerText = '$' + subTotalFare;
+        const confirmTotal = document.getElementById('confirm-total');
+        const totalFare = subTotalFare + (subTotalFare * 0.1);
+        confirmTotal.innerText = '$' + totalFare;
+    }
+
+})
 
 function calculateTotal() {
     const firstClassInput = document.getElementById('first-class-input');
     const economyInput = document.getElementById('economy-input');
 
-    if(firstClassInput.value == ''){
+    if (firstClassInput.value == '') {
         firstClassInput.value = 0;
     }
-    if(economyInput.value == ''){
+    if (economyInput.value == '') {
         economyInput.value = 0;
     }
     const firstClassInputNumber = parseInt(firstClassInput.value);
@@ -79,19 +88,5 @@ function calculateTotal() {
     //calculating total price
     const total = subTotal + tax;
     document.getElementById('total').innerText = '$' + total;
-    
-}
-
-function ticketGenerate(){
-    const mainContent = document.getElementById('main-content');
-    const destination = document.getElementById('destination');
-    const journeyStart = document.getElementById('journey-start')
-    const departureDate = document.getElementById('departure-date');
-    const returnDate = document.getElementById('return-date');
-    const totalFirstClassSeat = document.getElementById('first-class-input');
-    const economyClassSeat = document.getElementById('economy-input');
-    const totalAmout = document.getElementById('total');
-
-    
 
 }

@@ -13,6 +13,9 @@ body{
     background-attachment: scroll;
     background-size: cover;
 }
+.modal-backdrop.show{
+    opacity: -1.5;
+}
 nav{
     height: 50px;
     width: 100%;
@@ -33,13 +36,11 @@ nav ul li a{
     padding: 10px;
     text-transform: uppercase;
     margin-left: 30px;
+    text-decoration: none;
 }
 nav ul li a:hover, a.active{
     background-color: #52AF3A;
     border-radius: 5px;
-}
-#ticket-show{
-    display: none;
 }
 .main-content{
     display: grid;
