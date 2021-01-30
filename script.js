@@ -67,7 +67,14 @@ bookNow.addEventListener('click', function () {
 
 confirmPurchase.addEventListener('click', function () {
     const msg = document.getElementById('msg');
-    msg.innerText = 'Successfully order placed. Thanks for purchase.';
+    const totalCheck = document.getElementById('confirm-total').innerText;
+    if(totalCheck == '$00'){
+        msg.innerText = 'You have to select at least 1.';
+        msg.classList.add('text-danger');
+    }
+    else{
+        msg.innerText = 'Successfully order placed. Thanks for purchase.';
+    }
 })
 
 function calculateTotal() {
